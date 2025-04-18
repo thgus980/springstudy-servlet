@@ -47,7 +47,17 @@ public class FrontControllerServletV3 extends HttpServlet {
 
         ModelView mv=controller.process(paramMap);
 
+        String viewName=mv.getViewName();//mv 로부터는 논리 이름 (ex. new-form)만 알 수 있다
 
+        MyView view = viewResolver(viewName); //논리 이름을 가지고 물리 이름을 만들어준다
+
+        view.render(mv.getModel(), request,response);
+
+
+    }
+
+    private static MyView viewResolver(String viewName) {
+        return new MyView("/WEB-INF/views/" + viewName + ".jsp");
     }
 
     private static Map<String, String> createParamMap(HttpServletRequest request) {
