@@ -11,5 +11,5 @@ public interface MyHandlerAdapter {
 
     boolean supports(Object handler); // 컨트롤러(핸들러)가 넘어왔을 때 내가 이 컨트롤러를 지원할 수 있어?
 
-    ModelView handler(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+    ModelView handle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException, IOException;
 }
